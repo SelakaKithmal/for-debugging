@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="mx-2">
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxFlex.xs="90" fxFlex.sm="45" fxFlex.md="35" fxFlex.lg="35">
+        <form
+          #loginForm="ngForm"
+          (ngSubmit)="onSubmit(loginForm.value)"
+          fxLayout="column"
+          fxLayoutGap="5px"
+          class="mt-5"
+        >
+          <div class="mt-3">
+            <mat-form-field>
+              <input
+                type="email"
+                matInput
+                placeholder="Email"
+                name="email"
+                [(ngModel)]="email"
+                required
+                autofocus
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                [type]="hide ? 'password' : 'text'"
+                matInput
+                placeholder="Password"
+                name="password"
+                [(ngModel)]="password"
+                required
+              />
+              <mat-icon
+                matSuffix
+                (click)="hide = !hide"
+                style="cursor: pointer;"
+                >{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon
+              >
+            </mat-form-field>
+          </div>
+          <div *ngIf="busy" class="mb-4">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+          <div>
+            <button
+              style="width:100%;"
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="loginForm.invalid || busy"
+            >
+              Login
+            </button>
+          </div>
+          <div class="mt-3">
+            <p class="text-center">
+              Don’t have an account?
+            </p>
+            <button
+              mat-flat-button
+              style="width: 100%;"
+              [routerLink]="['/auth/register']"
+              color="primary"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

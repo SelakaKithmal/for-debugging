@@ -1,0 +1,26 @@
+.bg {
+  background-image: linear-gradient(
+    to right bottom,
+    #ae2dee,
+    #a329e0,
+    #9924d3,
+    #8e20c5,
+    #841cb8,
+    #7b18ad,
+    #7314a1,
+    #6a1096,
+    #610c8a,
+    #57077e,
+    #4e0472,
+    #450166
+  );
+}
+
+
+/* input {
+  color:white;
+}
+
+.mat-form-field-label-wrapper {
+  color:white !important;
+} */

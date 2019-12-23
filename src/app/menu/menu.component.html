@@ -1,0 +1,106 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    #sidenav
+    [(mode)]="over"
+    [(opened)]="opened"
+    class="bottom-to-top"
+    id="justParent"
+  >
+    <div
+      class="mt-2 py-1 text-white"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="7px"
+    >
+      <div>
+        <p class="text-center">
+          <a [routerLink]="['/']"><img src="../../assets/icons/icon-72x72.png" /></a>
+        </p>
+
+        <a>
+          <span class="mat-display-1" style="color: #AE2DEE;">My App</span>
+        </a>
+      </div>
+    </div>
+    <div class="mt-1">
+      <mat-nav-list>
+        <a
+          [routerLink]="['/']"
+          mat-list-item
+          class="ml-2"
+          style="font-size:15px;"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon class="mr-3">home</mat-icon> Home
+        </a>
+        
+      </mat-nav-list>
+      <mat-accordion multi="true" [displayMode]="displayMode">
+        <mat-expansion-panel class="no-shadow">
+          <mat-expansion-panel-header
+            fxLayout="row"
+            [expandedHeight]="expandHeight"
+            [collapsedHeight]="collapseHeight"
+          >
+            <mat-panel-title>
+              <mat-icon class="mr-3">more_vert</mat-icon>
+              More
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="ml-0" dense>
+            <!-- <a [routerLink]="['/p/privacy']" (click)="sidenav.toggle()" mat-list-item>
+              <a>Privacy</a>
+            </a> -->
+            <a [routerLink]="['/p/terms']" (click)="sidenav.toggle()" mat-list-item>
+              T&C
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="secondary" class="no-print">
+      <button mat-icon-button (click)="sidenav.toggle()" title="Toggle sidebar">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <a [routerLink]="['/']"><img class="ml-1 pt-2" src="../../assets/icons/icon-72x72.png" width="32px" /></a> -->
+      <a
+        mat-icon-button
+        [routerLink]="['/']"
+        title="Home"
+        fxShow.xs
+        fxHide.gt-xs
+      >
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-button [routerLink]="['/']" title="Home" fxHide.xs>
+        <mat-icon class="mr-0">home</mat-icon>
+        Home
+      </a>
+      <span class="spacer"></span>
+
+      <button
+        mat-icon-button
+        class=""
+        title="Logout"
+        style="cursor: pointer"
+        (click)="logout()"
+        *ngIf="user"
+      >
+        <mat-icon> power_settings_new</mat-icon>
+      </button>
+      <a
+        [routerLink]="['/auth/login']"
+        mat-icon-button
+        class="ml-2"
+        title="Login"
+        *ngIf="!user"
+      >
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

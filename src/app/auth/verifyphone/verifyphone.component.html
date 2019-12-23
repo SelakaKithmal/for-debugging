@@ -1,0 +1,26 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-3" id="justParent">
+  <div fxLayout="column">
+    <h4>Verify phone number to proceed</h4>
+    <div>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Enter Code Received"
+          name="code"
+          [(ngModel)]="code"
+          required
+          #input
+        />
+        <mat-hint align="end">{{ input.value?.length || 0 }}/6</mat-hint>
+      </mat-form-field>
+    </div>
+    <div *ngIf="isBusy" class="my-3">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div *ngIf="!isBusy">
+      <button (click)="doSubmit(code)" mat-raised-button color="primary">
+        Verify and continue
+      </button>
+    </div>
+  </div>
+</div>
